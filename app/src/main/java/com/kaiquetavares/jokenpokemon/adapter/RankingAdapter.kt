@@ -1,12 +1,15 @@
 package com.kaiquetavares.jokenpokemon.adapter
 
 import android.content.Context
+import android.support.v4.content.ContextCompat
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.kaiquetavares.jokenpokemon.R
+import com.kaiquetavares.jokenpokemon.RankingActivity
 import com.kaiquetavares.jokenpokemon.model.Jogador
+import kotlinx.android.synthetic.main.activity_ranking.view.*
 import kotlinx.android.synthetic.main.ranking_card.view.*
 
 class RankingAdapter(private val jogadores: List <Jogador>,
@@ -39,7 +42,7 @@ class RankingAdapter(private val jogadores: List <Jogador>,
             val tvPontos = tvPontos
 
             //Para colocar imagem do usuario
-            //ivHeroi.setImageDrawable(ContextCompat.getDrawable(context,heroi.resourceId))
+            ivUser.setImageDrawable(ContextCompat.getDrawable(this.context,R.drawable.user))
             tvNome.text = jogador.nome
             tvPontos.text = jogador.pontos.toString()
             tvTitulo.text = "PONTUAÇÃO"

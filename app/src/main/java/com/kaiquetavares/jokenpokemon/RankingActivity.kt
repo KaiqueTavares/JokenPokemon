@@ -21,11 +21,6 @@ class RankingActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_ranking)
 
-        rvRanking.adapter = RankingAdapter(getJogadores(),this,{
-            Toast.makeText(this,"O jogador: " + it.nome + "tem um total de pontos: " + it.pontos,Toast.LENGTH_LONG).show()
-        })
-        rvRanking.layoutManager= LinearLayoutManager(this)
-
         //val pontuacao = Jogador("Felipe Melo", 500)
         val retrofit = Retrofit.Builder()
                 .baseUrl("https://gamestjd.herokuapp.com")
@@ -42,8 +37,10 @@ class RankingActivity : AppCompatActivity() {
                     }
 
                     override fun onResponse(call: Call<List<Jogador>>?, response: Response<List<Jogador>>?) {
-                        val jogador = response?.body()
-
+                        response?.body()?.let {
+                            val jogadores: List<Jogador> = it
+                            configureList(jogadores)
+                        }
                     }
                 })
 
@@ -64,11 +61,15 @@ class RankingActivity : AppCompatActivity() {
     }
 
     //Faço uma função que retorna uma lista preenchida
-    fun getJogadores(): List<Jogador>{
-        return listOf(
-                Jogador("Chiquito",1000)
-        )
+    fun configureList(jogadores: List<Jogador>){
+        val recyclerView = rvRanking
+        recyclerView.adapter = RankingAdapter(jogadores, this,{
+            Toast.makeText(this,"O jogador: " + it.nome + " tem um total de " + it.pontos + " pontos.",Toast.LENGTH_LONG).show()
+        })
+        recyclerView.layoutManager=LinearLayoutManager(this)
     }
+
+
 }
 
 
