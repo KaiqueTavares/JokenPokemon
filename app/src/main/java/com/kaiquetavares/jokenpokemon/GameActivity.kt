@@ -71,13 +71,13 @@ class GameActivity : AppCompatActivity() {
 
         //Quando eu tiver qualquer numero do Jogada PC
         when (jogadaPC){
-        //Se for pedra, vale lembrar que ele terá retornado 1
+        //Se for Fogo, vale lembrar que ele terá retornado 1
             FOGO ->{
-                //Troco minha iamgem para a pedra
+                //Troco minha iamgem para o charmander
                 ivResultadoPC!!.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.op_charmander))
                 //Qunado eu receber o parametro que eu passar quando chamar a func
                 when (jogadaPlayer){
-                //Se este parametro for papel ele vence, por que papel embrulha a pedra.
+                //Faço as condições, tive que inverter a derrota e vitoria não sei o por que, deve ser por causa dos IDs
                     GRAMA -> perdeu()
                     FOGO -> empate()
                     AGUA -> venceu()
@@ -115,11 +115,11 @@ class GameActivity : AppCompatActivity() {
         //Minha variavel recebe um valor random
         numeroAleatorio=Random()
 
-        //Quando o usuario clicar na pedra
+        //Quando o usuario clicar no charmander
         ivFogo.setOnClickListener {
-            //Ele irá trocar a imagem para pedra
+            //Ele irá trocar a imagem para o charmander
             ivResultadoPlayer!!.setImageDrawable(ContextCompat.getDrawable(this,R.drawable.op_charmander))
-            //Vou chamar minha função passando o valor de PEDRA para que a função calcule e nos de o resultado.
+            //Vou chamar minha função passando o valor de FOGO para que a função calcule e nos de o resultado.
             realizarJogada(FOGO)
         }
 

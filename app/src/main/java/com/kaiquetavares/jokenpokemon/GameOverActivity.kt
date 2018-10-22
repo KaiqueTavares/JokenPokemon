@@ -23,8 +23,10 @@ class GameOverActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_game_over)
 
+        //Recuperando a variavel pontos que foi passada da tela de Game
         val pontos = intent.extras.getInt("PONTUACAO")
 
+        //API Link
         val retrofit = Retrofit.Builder()
                 .baseUrl("https://gamestjd.herokuapp.com")
                 .addConverterFactory(GsonConverterFactory.create())
@@ -33,6 +35,8 @@ class GameOverActivity : AppCompatActivity() {
 
         btJogarNovamente.setOnClickListener {
             val service = retrofit.create(JokenPokemonService::class.java!!)
+            //Usando um POST E passando os parametros necessarios para o objeto mandar a api
+            //Vale lembrar que aqui eu peguei o que o usuario colocou como nome e os pontos que tive na outra tela
             service.enviarPontuacao(pontuacao = Jogador(etNomePlayer.text.toString(),pontos))
                     .enqueue(object : Callback<Void> {
                         override fun onFailure(call: Call<Void>?, t: Throwable?) {
@@ -47,9 +51,12 @@ class GameOverActivity : AppCompatActivity() {
                                     Toast.LENGTH_SHORT).show()
                         }
                     })
+            //Parecido com uma corountine que ira demorar o que coloquei em delay tela para executar a acao
             Handler().postDelayed({
+                //Iniciando a tela de game
                 val Game = Intent(this,GameActivity::class.java)
                 startActivity(Game)
+                //Finalizando/Destruindo esta minha tela
                 finish()
             },delayTela)
         }

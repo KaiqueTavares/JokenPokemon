@@ -28,6 +28,7 @@ class RankingActivity : AppCompatActivity() {
                 .build()
 
         val service = retrofit.create(JokenPokemonService::class.java!!)
+        //Dando um GET na api como eu fiz no meu JokenPokemonService
         service.buscarRanking()
                 .enqueue(object : Callback<List<Jogador>> {
                     override fun onFailure(call: Call<List<Jogador>>?, t: Throwable?) {
@@ -37,8 +38,12 @@ class RankingActivity : AppCompatActivity() {
                     }
 
                     override fun onResponse(call: Call<List<Jogador>>?, response: Response<List<Jogador>>?) {
+                        //Estou recebendo meu JSON e estou colocando ele em um formato de segurança dentro de um LET
                         response?.body()?.let {
+                            //Logo meus jogadores vai ser uma lista de objeto Jogador(Model deste projeto) e ele vai ser igual ao IT
+                            //O it vai ser o response?.body()?.let que trouxe da API
                             val jogadores: List<Jogador> = it
+                            //Irei configurar minha lista passando a minha lista ja preenchida com tudo certo
                             configureList(jogadores)
                         }
                     }
@@ -47,14 +52,18 @@ class RankingActivity : AppCompatActivity() {
 
     //Faço uma função que retorna uma lista preenchida
     fun configureList(jogadores: List<Jogador>){
+        //Pego meu recycler view e deixo em uma variavel
         val recyclerView = rvRanking
+        //Pego meu adapter e irei preencher ele com minha lista de jogadores que coletei da API no OnResponse
+        //Meu adapter tem um listener logo eu preciso executar alguma coisa se não vai dar erro, neste caso estou dando um Debug ao usuario
         recyclerView.adapter = RankingAdapter(jogadores, this,{
             Toast.makeText(this,"O jogador: " + it.nome + " tem um total de " + it.pontos + " pontos.",Toast.LENGTH_LONG).show()
         })
+        //Falando que meu layout vai ser linear nesta tela
         recyclerView.layoutManager=LinearLayoutManager(this)
     }
 
-
+    //Codigo realizado por KaiqueTavares :) You´re Welcome.
 }
 
 
