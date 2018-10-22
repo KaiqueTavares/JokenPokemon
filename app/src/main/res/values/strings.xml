@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">JokenPokemon</string>
+    <string name="venceu">Você venceu a batalha</string>
+    <string name="derrota">Treinador não foi seu dia!</string>
+    <string name="empate">Empate</string>
 </resources>

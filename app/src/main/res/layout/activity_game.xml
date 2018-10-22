@@ -55,7 +55,7 @@
                 android:layout_height="wrap_content"
                 android:textSize="16sp"
                 android:text="20"
-                android:id="@+id/ivTentativas"/>
+                android:id="@+id/tvTentativas"/>
 
         </LinearLayout>
 
@@ -75,19 +75,19 @@
         android:orientation="horizontal">
 
         <ImageView
-            android:id="@+id/ivPedra"
+            android:id="@+id/ivFogo"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/op_charmander" />
 
         <ImageView
-            android:id="@+id/ivPapel"
+            android:id="@+id/ivGrama"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/op_bulbassaur" />
 
         <ImageView
-            android:id="@+id/ivTesoura"
+            android:id="@+id/ivAgua"
             android:layout_width="100dp"
             android:layout_height="100dp"
             android:background="@drawable/op_squirtle" />
@@ -97,6 +97,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="Última jogada"
         android:textSize="24sp"
         android:id="@+id/tvUltimaJogada"/>
@@ -147,12 +148,13 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
         android:text="RESULTADO:"
         android:textSize="24sp"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Vencemos"
+        android:text="Esperando sua 1°Jogada"
         android:textSize="24sp"
         android:id="@+id/tvResultado"/>
 

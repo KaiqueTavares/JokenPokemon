@@ -43,21 +43,6 @@ class RankingActivity : AppCompatActivity() {
                         }
                     }
                 })
-
-
-
-        /*
-       val service = retrofit.create(JokenPokemonService::class.java!!)
-       service.enviarPontuacao(pontuacao)
-               .enqueue(object : Callback<Void> {
-                   override fun onFailure(call: Call<Void>?, t: Throwable?) {
-
-                   }
-
-                   override fun onResponse(call: Call<Void>?, response: Response<Void>?) {
-
-                   }
-               })*/
     }
 
     //Faço uma função que retorna uma lista preenchida
